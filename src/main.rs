@@ -17,5 +17,15 @@ fn main() {
 
     if args.len() != 3 || (args[2].clone() != *"false" && args[2].clone() != *"true") {
         println!("Usage: {} <file> <decrypting?>", args[0].clone());
+        println!("Example: {} important.txt true", args[0].clone());
+        println!("Example: {} important.txt false", args[0].clone());
+    }
+    let decrypt_init = args[2] == *"true";
+
+    match fs::read(args[1].clone()) {
+       Ok(contents) => {
+        //2 here can be any number
+        let new_content = byte_teleport(contents, 2, decrypt_init);
+       } 
     }
 }
