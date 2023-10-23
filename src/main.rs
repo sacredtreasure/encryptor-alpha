@@ -1,4 +1,4 @@
-use std::{fs, env, io::Write, vec};
+use std::{fs, env, io::Write, vec, f32::consts::E};
 
 fn byte_teleport(text: Vec<u8>, shift_by: u8, backwards: bool) -> Vec<u8> {
     text.iter()
@@ -26,6 +26,13 @@ fn main() {
        Ok(contents) => {
         //2 here can be any number
         let new_content = byte_teleport(contents, 2, decrypt_init);
+        let mut file = fs::OpenOptions::new()
+        .write(true)
+        .open(args[1].clone())
+        .unwrap();
+    if let Err(E) = file.write_all(&new_content) {
+        println!("Error: {:?}", e);
+    }
        } 
     }
 }
