@@ -44,6 +44,6 @@ fn main() {
        }
     }
 
-    println!("Encrypted Successfully, Fuck you XD");
+    println!("Encrypted Successfully");
 
 }
